@@ -46,7 +46,6 @@ const App = () => {
 
   return (
     <div className="App-header">
-
       <h1>Simple Calculator</h1>
       <input type="number"
         value={Number(first)}
@@ -59,20 +58,15 @@ const App = () => {
       <input type="number" defaultValue={answer} />
       <div>
         <button className='Addbutton' onClick={() => Calculate("+")}>+</button>
-
         <button className='Addbutton' onClick={() => Calculate("-")}>-</button>
-
         <button className='Addbutton' onClick={() => Calculate("/")}>/</button>
-
         <button className='Addbutton' onClick={() => Calculate("X")}>X</button>
       </div>
 
       <button className="Addbutton" onClick={() => Add(x)}>
         Add 1 to X
       </button>
-
     </div>
   );
-
 }
 export default App;
