@@ -4,12 +4,14 @@ import { useState } from 'react';
 
 
 const App = () => {
-  //add in a truck load of code!
+  const [counter, setCounter] = useState(0);
 
-  const [x, setX] = useState(0);
+
   const [answer, setAnswer] = useState("");
   const [first, setFirst] = useState(10);
   const [second, setSecond] = useState(22);
+
+
 
   //Value =  + - / X
   const Calculate = (value) => {
@@ -30,30 +32,29 @@ const App = () => {
       }
     }
   }
-
-
-  //const x = 0;
-
+  //  var counter = 0; //simple variable holds a value of 0
+  //a simple function to add 1 to counter
   var Add = (x) => {
-    x = x + 1;
-    console.log("What is X?", x);
-    setX(x);
+    x = x + 1; //adds 1 to counter
+    console.log("Adding 1 to counter", x);
+    setCounter(x); //sets a new value to  counter
     return x;
   }
 
-
+  // console.log("What is the Counter value?", x);
+  // setCounter(x); //sets a new value to  counter
 
 
   return (
     <div className="App-header">
-      <h1>Simple Calculator</h1>
-      <input type="number"
+      {/* <h1>Simple Calculator</h1>
+       <input type="number"
         value={Number(first)}
         onChange={(e) => setFirst(e.target.value)} />
 
       <input type="number"
         value={Number(second)}
-        onChange={(e) => setFirst(e.target.value)} />
+        onChange={(e) => setSecond(e.target.value)} />
 
       <input type="number" defaultValue={answer} />
       <div>
@@ -61,12 +62,14 @@ const App = () => {
         <button className='Addbutton' onClick={() => Calculate("-")}>-</button>
         <button className='Addbutton' onClick={() => Calculate("/")}>/</button>
         <button className='Addbutton' onClick={() => Calculate("X")}>X</button>
-      </div>
+      </div> */}
 
-      <button className="Addbutton" onClick={() => Add(x)}>
-        Add 1 to X
+      <button className="Addbutton" onClick={() => Add(counter)}>
+        Add 1 to {counter}
       </button>
+      <h2>{counter}</h2>
     </div>
   );
 }
 export default App;
+
