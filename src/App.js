@@ -41,14 +41,11 @@ const App = () => {
     return x;
   }
 
-  // console.log("What is the Counter value?", x);
-  // setCounter(x); //sets a new value to  counter
-
 
   return (
     <div className="App-header">
-      {/* <h1>Simple Calculator</h1>
-       <input type="number"
+      <h1>Simple Calculator</h1>
+      <input type="number"
         value={Number(first)}
         onChange={(e) => setFirst(e.target.value)} />
 
@@ -62,7 +59,7 @@ const App = () => {
         <button className='Addbutton' onClick={() => Calculate("-")}>-</button>
         <button className='Addbutton' onClick={() => Calculate("/")}>/</button>
         <button className='Addbutton' onClick={() => Calculate("X")}>X</button>
-      </div> */}
+      </div>
 
       <button className="Addbutton" onClick={() => Add(counter)}>
         Add 1 to {counter}
