@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-
+import { useState } from 'react'; //get the useState function from react
 
 const App = () => {
   const [counter, setCounter] = useState(0);
@@ -11,32 +9,40 @@ const App = () => {
   const [first, setFirst] = useState(10);
   const [second, setSecond] = useState(22);
 
-
+  const LogCalculate = (first, second, symbol) => {
+    console.log("Running the calc", first + " " + symbol + " " + second + " = " + eval(first + symbol + second));
+  }
 
   //Value =  + - / X
   const Calculate = (value) => {
-    console.log("What is value?", value);
+    // console.log("What is value?", value);
 
     if (value !== "") {
       switch (value) {
-        case "-": setAnswer(first - second);
+        case "-":
+
+          setAnswer(first - second);
+
           break;
         //Number is needed to make it add and not concatinate
-        case "+": setAnswer(Number(first + second));
+        case "+":
+          setAnswer(Number(first + second));
           break;
         case "/": setAnswer(first / second);
           break;
-        case "X": setAnswer(first * second);
+        case "*": setAnswer(first * second);
           break;
         default: setAnswer("Error");
       }
+      LogCalculate(first, second, value)
     }
+
   }
   //  var counter = 0; //simple variable holds a value of 0
   //a simple function to add 1 to counter
   var Add = (x) => {
     x = x + 1; //adds 1 to counter
-    console.log("Adding 1 to counter", x);
+    // console.log("Adding 1 to counter", x);
     setCounter(x); //sets a new value to  counter
     return x;
   }
@@ -47,18 +53,18 @@ const App = () => {
       <h1>Simple Calculator</h1>
       <input type="number"
         value={Number(first)}
-        onChange={(e) => setFirst(e.target.value)} />
+        onChange={(e) => setFirst(Number(e.target.value))} />
 
       <input type="number"
         value={Number(second)}
-        onChange={(e) => setSecond(e.target.value)} />
+        onChange={(e) => setSecond(Number(e.target.value))} />
 
       <input type="number" defaultValue={answer} />
       <div>
         <button className='Addbutton' onClick={() => Calculate("+")}>+</button>
         <button className='Addbutton' onClick={() => Calculate("-")}>-</button>
         <button className='Addbutton' onClick={() => Calculate("/")}>/</button>
-        <button className='Addbutton' onClick={() => Calculate("X")}>X</button>
+        <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
       </div>
 
       <button className="Addbutton" onClick={() => Add(counter)}>
