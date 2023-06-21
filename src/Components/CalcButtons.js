@@ -2,6 +2,8 @@ import { React, useState } from 'react'
 import { LogCalculate, LogValue } from './Logs';
 
 import { Calcbutton } from './SingleButton';
+import Inputs from './Inputs';
+import ButtonKeypad from './buttonKeypad';
 //rafce
 const CalcButtons = () => {
 
@@ -37,20 +39,13 @@ const CalcButtons = () => {
     }
     return (
         <div>
-            <input type="number"
-                value={Number(first)}
-                onChange={(e) => setFirst(Number(e.target.value))} />
-            <input type="number"
-                value={Number(second)}
-                onChange={(e) => setSecond(Number(e.target.value))} />
+            <Inputs first={first} second={second} answer={answer} setFirst={setFirst} setSecond={setSecond} ></Inputs>
 
-            <input type="number" defaultValue={answer} />
-            <div>
-                <Calcbutton symbol={"+"} calculate={Calculate}></Calcbutton>
-                <Calcbutton symbol={"-"} calculate={Calculate}></Calcbutton>
-                <Calcbutton symbol={"/"} calculate={Calculate}></Calcbutton>
-                <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
-            </div>
+            <Calcbutton symbol={"+"} calculate={Calculate}></Calcbutton>
+            <Calcbutton symbol={"-"} calculate={Calculate}></Calcbutton>
+            <Calcbutton symbol={"/"} calculate={Calculate}></Calcbutton>
+            <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
+            <ButtonKeypad setFirst={setFirst} />
         </div>
     )
 }

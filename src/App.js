@@ -23,10 +23,10 @@ const App = () => {
 
       <CalcButtons></CalcButtons>
 
-      <button className="Addbutton" onClick={() => Add(counter)}>
+      {/* <button className="Addbutton" onClick={() => Add(counter)}>
         Add 1 to {counter}
       </button>
-      <h2>{counter}</h2>
+      <h2>{counter}</h2> */}
     </div>
   );
 }
