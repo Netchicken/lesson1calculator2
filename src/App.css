@@ -7,6 +7,20 @@
   font-size: 20px;
 }
 
+
+.digits button {
+  background-color: #acc5e0;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border: 0.5px solid #b0b0b0;
+}
+
+.digits button:hover {
+  background-color: #c9c9c9;
+}
+
+
 h1 {
   margin-top: 12px;
 }

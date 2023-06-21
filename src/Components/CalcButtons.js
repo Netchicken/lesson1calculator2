@@ -11,30 +11,50 @@ const CalcButtons = () => {
     const [first, setFirst] = useState(10);
     const [second, setSecond] = useState(22);
 
+    let trigger = false;
+    // 123 + 567
+    const keyInput = (value) => {
+
+        console.log(value + " " + trigger);
+        let symbols = ["+", "-", "/", "*"];
+        if (symbols.includes(value)) {
+            trigger = true
+            console.log("trigger run", value + " " + trigger);
+        }
+
+        if (trigger == false) {
+            setFirst(first + String(value));//concatinate the numbers not add them
+        }
+
+        if (trigger == true) {
+            setSecond(second + String(value));//concatinate the numbers not add them
+        }
+
+    }
 
     //Value =  + - / X
     const Calculate = (value) => {
-        LogValue(value);
+        // LogValue(value);
 
-        if (value !== "") {
-            switch (value) {
-                case "-":
+        // if (value !== "") {
+        //     switch (value) {
+        //         case "-":
 
-                    setAnswer(first - second);
+        //             setAnswer(first - second);
 
-                    break;
-                //Number is needed to make it add and not concatinate
-                case "+":
-                    setAnswer(Number(first + second));
-                    break;
-                case "/": setAnswer(first / second);
-                    break;
-                case "*": setAnswer(first * second);
-                    break;
-                default: setAnswer("Error");
-            }
-            LogCalculate(first, second, value)
-        }
+        //             break;
+        //         //Number is needed to make it add and not concatinate
+        //         case "+":
+        //             setAnswer(Number(first + second));
+        //             break;
+        //         case "/": setAnswer(first / second);
+        //             break;
+        //         case "*": setAnswer(first * second);
+        //             break;
+        //         default: setAnswer("Error");
+        //     }
+        //     LogCalculate(first, second, value)
+        // }
 
     }
     return (
@@ -45,7 +65,9 @@ const CalcButtons = () => {
             <Calcbutton symbol={"-"} calculate={Calculate}></Calcbutton>
             <Calcbutton symbol={"/"} calculate={Calculate}></Calcbutton>
             <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
-            <ButtonKeypad setFirst={setFirst} />
+            <div className='digits'>
+                <ButtonKeypad keyInput={keyInput} />
+            </div>
         </div>
     )
 }

@@ -6,6 +6,9 @@ import CalcButtons from './Components/CalcButtons';
 const App = () => {
   const [counter, setCounter] = useState(0);
 
+
+
+
   //  var counter = 0; //simple variable holds a value of 0
   //a simple function to add 1 to counter
   var Add = (x) => {
