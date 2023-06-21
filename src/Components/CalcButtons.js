@@ -1,6 +1,8 @@
 import { React, useState } from 'react'
 import { LogCalculate, LogValue } from './Logs';
 
+import { Calcbutton } from './SingleButton';
+//rafce
 const CalcButtons = () => {
 
     const [answer, setAnswer] = useState("");
@@ -44,9 +46,9 @@ const CalcButtons = () => {
 
             <input type="number" defaultValue={answer} />
             <div>
-                <button className='Addbutton' onClick={() => Calculate("+")}>+</button>
-                <button className='Addbutton' onClick={() => Calculate("-")}>-</button>
-                <button className='Addbutton' onClick={() => Calculate("/")}>/</button>
+                <Calcbutton symbol={"+"} calculate={Calculate}></Calcbutton>
+                <Calcbutton symbol={"-"} calculate={Calculate}></Calcbutton>
+                <Calcbutton symbol={"/"} calculate={Calculate}></Calcbutton>
                 <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
             </div>
         </div>
