@@ -8,11 +8,11 @@ import ButtonKeypad from './buttonKeypad';
 const CalcButtons = () => {
 
     const [answer, setAnswer] = useState("");
-    const [first, setFirst] = useState(10);
-    const [second, setSecond] = useState(22);
+    const [first, setFirst] = useState(0);
+    const [second, setSecond] = useState(0);
     //if its false it goes in the first box, if its true it goes in teh second
     const [trigger, setTrigger] = useState(false);
-    const [operation, setOperation] = useState("");
+    const [operation, setOperation] = useState(""); //+-/*
 
     // let trigger = false;
     // 123 + 567
@@ -21,12 +21,12 @@ const CalcButtons = () => {
         console.log(value + " " + trigger);
 
         if ((trigger === false)) {
-            setFirst(first + String(value));//concatinate the numbers not add them
+            setFirst(Number(first + String(value)));//concatinate the numbers not add them
             console.log("first value", value);
         }
 
         if ((trigger === true)) {
-            setSecond(second + String(value));//concatinate the numbers not add them
+            setSecond(Number(second + String(value)));//concatinate the numbers not add them
         }
 
     }
@@ -38,8 +38,8 @@ const CalcButtons = () => {
         console.log("trigger run", value + " " + trigger);
 
         //save the operation we use to calculate
-        if (symbols.includes(value)) {
-            setOperation(value);
+        if (symbols.includes(value)) { //yay its  asymbol
+            setOperation(value); //save it to setoperation 
         }
         //if its an equals sign then calculate
         if (value == "=") {
@@ -58,9 +58,9 @@ const CalcButtons = () => {
                 default: setAnswer("Error");
             }
 
-            LogCalculate(first, second, operation)
+            //  LogCalculate(first, second, operation)
             //reset
-            setOperation("");
+            setOperation(""); //empty field
             setTrigger(false);
         }
     }
@@ -71,9 +71,9 @@ const CalcButtons = () => {
             <Calcbutton symbol={"+"} calculate={Calculate}></Calcbutton>
             <Calcbutton symbol={"-"} calculate={Calculate}></Calcbutton>
             <Calcbutton symbol={"/"} calculate={Calculate}></Calcbutton>
-
             <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
             <Calcbutton symbol={"="} calculate={Calculate}></Calcbutton>
+
             <div className='digits'>
                 <ButtonKeypad keyInput={keyInput} />
             </div>
