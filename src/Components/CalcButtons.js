@@ -1,18 +1,18 @@
 import { React, useState } from 'react'
-import { LogCalculate, LogValue } from './Logs';
-
-import { Calcbutton } from './SingleButton';
+import { SingleButton } from './SingleButton';
 import Inputs from './Inputs';
 import ButtonKeypad from './buttonKeypad';
+
+import { LogCalculate, LogValue } from './Logs';
 //rafce
 const CalcButtons = () => {
 
     const [answer, setAnswer] = useState("");
     const [first, setFirst] = useState(0);
     const [second, setSecond] = useState(0);
-    //if its false it goes in the first box, if its true it goes in teh second
+    //if its false it goes in the first box, if its true it goes in the second
     const [trigger, setTrigger] = useState(false);
-    const [operation, setOperation] = useState(""); //+-/*
+    const [operation, setOperation] = useState(""); //what operation are we using?  +-/*
 
     // let trigger = false;
     // 123 + 567
@@ -21,58 +21,62 @@ const CalcButtons = () => {
         console.log(value + " " + trigger);
 
         if ((trigger === false)) {
-            setFirst(Number(first + String(value)));//concatinate the numbers not add them
+            setFirst(Number(first + String(value)));//concatinate the numbers then save as number
             console.log("first value", value);
         }
 
         if ((trigger === true)) {
-            setSecond(Number(second + String(value)));//concatinate the numbers not add them
+            setSecond(Number(second + String(value)));//concatinate the numbers then save as number
         }
 
     }
 
     //Value =  + - / X
     const Calculate = (value) => {
-        let symbols = ["+", "-", "/", "*"];
         setTrigger(true);
+
         console.log("trigger run", value + " " + trigger);
 
-        //save the operation we use to calculate
+        //save the operation we use to calculate   
+        let symbols = ["+", "-", "/", "*"];
         if (symbols.includes(value)) { //yay its  asymbol
             setOperation(value); //save it to setoperation 
         }
+
         //if its an equals sign then calculate
         if (value == "=") {
             switch (operation) {
                 case "-":
-                    setAnswer(first - second);
+                    setAnswer(" = " + Number(first - second));
                     break;
                 //Number is needed to make it add and not concatinate
                 case "+":
-                    setAnswer(Number(first + second));
+                    setAnswer(" = " + Number(first + second));
                     break;
-                case "/": setAnswer(first / second);
+                case "/":
+                    setAnswer(" = " + Number(first / second));
                     break;
-                case "*": setAnswer(first * second);
+                case "*":
+                    setAnswer(" = " + Number(first * second));
                     break;
-                default: setAnswer("Error");
+                default:
+                    setAnswer("Error");
             }
-
-            //  LogCalculate(first, second, operation)
+            // setAnswer(" = " + answer);
             //reset
-            setOperation(""); //empty field
+            // setOperation(""); //empty field
             setTrigger(false);
         }
     }
     return (
         <div>
-            <Inputs first={first} second={second} answer={answer} setFirst={setFirst} setSecond={setSecond} ></Inputs>
+            <Inputs first={first} second={second} operation={operation} answer={answer} setFirst={setFirst} setSecond={setSecond} ></Inputs>
 
-            <Calcbutton symbol={"+"} calculate={Calculate}></Calcbutton>
-            <Calcbutton symbol={"-"} calculate={Calculate}></Calcbutton>
-            <Calcbutton symbol={"/"} calculate={Calculate}></Calcbutton>
+            <SingleButton symbol={"+"} calculate={Calculate}></SingleButton>
+            <SingleButton symbol={"-"} calculate={Calculate}></SingleButton>
+            <SingleButton symbol={"/"} calculate={Calculate}></SingleButton>
             <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
-            <Calcbutton symbol={"="} calculate={Calculate}></Calcbutton>
+            <SingleButton symbol={"="} calculate={Calculate}></SingleButton>
 
             <div className='digits'>
                 <ButtonKeypad keyInput={keyInput} />
