@@ -13,8 +13,10 @@ const Inputs = (props) => {
 
 
 
+
+            <div className="drip">{Number(props.first)}   {props.operation}  {Number(props.second)}   {props.answer}</div>
+
             <div className="goo">
-                <h1>{Number(props.first)}   {props.operation}  {Number(props.second)}   {props.answer}</h1>
                 <div className="drop"></div>
                 <div className="drop"></div>
                 <div className="drop"></div>

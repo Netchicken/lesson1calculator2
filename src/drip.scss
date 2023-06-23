@@ -1,21 +1,24 @@
-$hue: #007fed;
+$hue: #0783f0;
 $hue-light: lighten($hue, 40%);
 $hue-dark: darken($hue, 30%);
 
-body {
+.drip {
     overflow: hidden;
     // width: 100vw;
     // height: 100vh;
     font-family: sans-serif;
-    background: $hue-light;
-}
+    // background: $hue-light;
 
-h1 {
     margin: 0;
     // font-weight: bold;
     font-size: 70px;
     text-align: center;
     color: $hue;
+
+}
+
+h1 {
+
     // text-shadow: 1px 1px 0 $hue-dark;
 }
 
