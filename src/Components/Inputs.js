@@ -10,12 +10,7 @@ const Inputs = (props) => {
 
     return (
         <div>
-
-
-
-
             <div className="drip">{Number(props.first)}   {props.operation}  {Number(props.second)}   {props.answer}</div>
-
             <div className="goo">
                 <div className="drop"></div>
                 <div className="drop"></div>
@@ -24,8 +19,6 @@ const Inputs = (props) => {
                 <div className="drop"></div>
                 <div className="drop"></div>
             </div>
-
-
         </div>
     )
 }

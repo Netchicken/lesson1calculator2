@@ -14,18 +14,18 @@ const CalcButtons = () => {
     const [trigger, setTrigger] = useState(false);
     const [operation, setOperation] = useState(""); //what operation are we using?  +-/*
 
-    // let trigger = false;
+
     // 123 + 567
     const keyInput = (value) => {
 
         console.log(value + " " + trigger);
 
-        if ((trigger === false)) {
+        if (trigger === false) {
             setFirst(Number(first + String(value)));//concatinate the numbers then save as number
             console.log("first value", value);
         }
 
-        if ((trigger === true)) {
+        if (trigger === true) {
             setSecond(Number(second + String(value)));//concatinate the numbers then save as number
         }
 
@@ -33,7 +33,7 @@ const CalcButtons = () => {
 
     //Value =  + - / X
     const Calculate = (value) => {
-        setTrigger(true);
+
 
         console.log("trigger run", value + " " + trigger);
 
@@ -41,6 +41,7 @@ const CalcButtons = () => {
         let symbols = ["+", "-", "/", "*"];
         if (symbols.includes(value)) { //yay its  asymbol
             setOperation(value); //save it to setoperation 
+            setTrigger(true);
         }
 
         //if its an equals sign then calculate
@@ -62,9 +63,7 @@ const CalcButtons = () => {
                 default:
                     setAnswer("Error");
             }
-            // setAnswer(" = " + answer);
             //reset
-            // setOperation(""); //empty field
             setTrigger(false);
         }
     }
@@ -75,6 +74,7 @@ const CalcButtons = () => {
             <SingleButton symbol={"+"} calculate={Calculate}></SingleButton>
             <SingleButton symbol={"-"} calculate={Calculate}></SingleButton>
             <SingleButton symbol={"/"} calculate={Calculate}></SingleButton>
+            {/* <SingleButton symbol={"*"} calculate={Calculate}>X</SingleButton> */}
             <button className='Addbutton' onClick={() => Calculate("*")}>X</button>
             <SingleButton symbol={"="} calculate={Calculate}></SingleButton>
 
